@@ -1,0 +1,163 @@
+/* Ejercicio 1: Caja Decorativa Animada */
+.caja {
+    position: relative;
+    width: 200px;
+    height: 100px;
+    margin: 30px auto;
+    background-color: #e0f7fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+  }
+  
+  .caja::before {
+    content: "";
+    position: absolute;
+    top: -6px; left: -6px; right: -6px; bottom: -6px;
+    border: 4px solid #00796b;
+    border-radius: 10px;
+    animation: borderAnim 3s infinite alternate;
+  }
+  
+  @keyframes borderAnim {
+    0% {
+      border-color: #00796b;
+      transform: scale(1);
+    }
+    50% {
+      border-color: #004d40;
+      transform: scale(1.1);
+    }
+    100% {
+      border-color: #00796b;
+      transform: scale(1);
+    }
+  }
+  
+  
+  /* Ejercicio 2: Boton con Efecto de Brillo */
+  .boton-brillo {
+    position: relative;
+    margin: 30px auto;
+    padding: 12px 25px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    cursor: pointer;
+    background-color: #0288d1;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  
+  .boton-brillo::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -50%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(255,255,255,0.5), rgba(255,255,255,0));
+    transform: skewX(-25deg) translateX(0);
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+  }
+  
+  .boton-brillo:hover::after {
+    animation: brilloAnim 1s forwards;
+  }
+  
+  @keyframes brilloAnim {
+    0% {
+      opacity: 1;
+      left: -50%;
+      transform: skewX(-25deg) translateX(0);
+    }
+    100% {
+      opacity: 0;
+      left: 150%;
+      transform: skewX(-25deg) translateX(100%);
+    }
+  }
+  
+  
+  /* Ejercicio 3: Mensaje Emergente Animado */
+  .mensaje {
+    position: relative;
+    width: 300px;
+    margin: 30px auto;
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+  }
+  
+  .mensaje::after {
+    content: "📢"; /* icono decorativo */
+    position: absolute;
+    top: 50%;
+    right: -30px;
+    transform: translateY(-50%);
+    opacity: 0;
+    animation: notiAnim 4s infinite;
+    font-size: 24px;
+  }
+  
+  @keyframes notiAnim {
+    0%, 80% {
+      opacity: 0;
+      right: -30px;
+    }
+    90% {
+      opacity: 1;
+      right: 5px;
+    }
+    100% {
+      opacity: 0;
+      right: -30px;
+    }
+  }
+  
+  
+  /* Ejercicio 4: Tarjeta Informativa Interactiva */
+  .tarjeta {
+    position: relative;
+    width: 300px;
+    margin: 30px auto;
+    padding: 20px;
+    border: 2px solid #1976d2;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+    background-color: #e3f2fd;
+  }
+  
+  .tarjeta::before {
+    content: "INFO";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #1976d2;
+    color: white;
+    padding: 4px 10px;
+    font-weight: bold;
+    font-size: 12px;
+    border-radius: 12px;
+    animation: pulse 2s infinite;
+    user-select: none;
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: scale(1.2);
+      opacity: 0.7;
+    }
+  }
+  
